@@ -4,6 +4,8 @@ from email.mime.text import MIMEText
 
 from os.path import basename
 
+import json
+
 import smtplib
 import openpyxl
 
@@ -22,10 +24,9 @@ def mail():
 
     n = int(number.get())
     m = sheet.max_row
-
     i = 1
     j = 1
-    while i <= n and j <= m:
+    while j <= n and i <= m:
         if sheet.cell(i, 1).value != None:
             to = sheet.cell(i, 1).value
             head = sheet.cell(i, 2).value
@@ -42,8 +43,8 @@ def mail():
                 add['Content-Disposition'] = 'attachment; filename="%s"' % basename(t)
                 msg.attach(add)
             server.sendmail('arteck', to, msg.as_string())
-            i += 1
-        j += 1
+            j += 1
+        i += 1
     server.quit()
 
 FILE = open('password.txt', 'r')

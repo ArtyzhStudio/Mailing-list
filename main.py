@@ -181,7 +181,7 @@ ttk.Separator(win, orient='horizontal').pack(padx=36, pady=20, fill='x')
 start = ttk.Frame(win)
 ttk.Label(start, text='Starting row : ').pack(side='left')
 strt = ttk.Entry(start)
-strt.insert(0, '1')
+strt.insert(0, config['start'])
 strt.pack(fill='x')
 start.pack(padx=10, fill='x')
 
